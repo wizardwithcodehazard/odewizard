@@ -1,0 +1,333 @@
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Poet'sYard</title>
+            <link rel="stylesheet" href="styles.css">
+            
+        </head>
+        <body>
+            <!-- Promo Banner -->
+            <div class="promo-banner">
+                📚 <strong>Welcome, to my world of poems.</strong> <a href ="https://linktr.ee/sahilrane">Just a kid on his polymath journey writing some poems →</a>
+            </div>
+
+            <!-- Header -->
+            <header class="header">
+                <div class="header__content">
+                    <div class="header__left">
+                        <a href="#" class="logo">ode<strong>wizard</strong></a>
+                        <nav class="nav">
+                            <a href="#" class="nav__link">Home</a>
+                            <a href="#" class="nav__link">My Poems</a>
+                            <a href="#" class="nav__link">Browse ▾</a>
+                            <a href="" class="nav__link">Community ▾</a>
+                        </nav>
+                    </div>
+                    <div class="header__right">
+                        <div class="search-container">
+                            <input type="text" class="search-bar" placeholder="Search poems" id="searchInput">
+                            <img src="https://img.icons8.com/ios-filled/24/000000/search--v1.png" alt="Search" class="search-icon">
+
+                        </div>
+                        <div class="header__icons">
+                            <div class="header__icon"><a href="www.linkedin.com/in/sahilrane8" style="text-decoration: none; color: inherit;" title="linkedin">💼</a></div>
+                            <div class="header__icon">
+                                <a href="https://www.instagram.com/sahilrane._" style="text-decoration: none; color: inherit;" title="instagram">👤</a></div>
+                            <div class="header__icon">
+                            <a href="https://x.com/SahilRane249?t=5p7_e2H5Hsp5x8d-pNRCHg&s=09" style="text-decoration: none; color: inherit;" title="x">✉️</a>
+                            </div>
+                            <div class="header__icon"><a href="https://www.goodreads.com/user/show/185868984-sahil-rane" style="text-decoration: none; color: inherit;" title="goodreads">📖</a></div>
+                            <div class="header__icon"><a href="https://github.com/wizardwithcodehazard" style="text-decoration: none; color: inherit;" title="github">☕️</a></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <!-- Main Content -->
+        <main class="main">
+        <div class="content">
+            <!-- Profile Section -->
+            <div class="profile">
+            
+            <!-- Profile Picture + Stats -->
+            <div class="profile__avatar">
+                <img src="https://i.pinimg.com/736x/7c/7f/c6/7c7fc616bb509ebe9687062ed28254ba.jpg" alt="Profile Picture">
+            </div>
+                <div class="profile__stats">
+                <div><a href="#">18 ratings (4.12 avg)</a></div>
+                <div><a href="#">15 reviews</a></div>
+                <div><a href="#">more photos (0)</a></div>
+                </div>
+
+
+            <!-- Profile Info & Details -->
+            <div class="profile__info">
+                <h1 class="profile__name">
+                Sahil Rane
+                <a class="profile__edit">(adhd kid)</a>
+                </h1>
+
+                <div class="profile__details">
+                <div class="profile__row">
+                    <div class="profile__label"><strong>Details</strong></div>
+                    <div class="profile__value">Male, India</div>
+                </div>
+
+                <div class="profile__row">
+                    <div class="profile__label"><strong>Blog</strong></div>
+                    <div class="profile__value">
+                    <a href="https://medium.com/@sahilrane.">https://medium.com/@sahilrane.</a>
+                    </div>
+                </div>
+
+                <div class="profile__row">
+                    <div class="profile__label"><strong>Github</strong></div>
+                    <div class="profile__value">
+                    <a href="https://github.com/wizardwithcodehazard">https://github.com/wizardwithcodehazard</a>
+                    </div>
+                </div>
+
+                <div class="profile__row">
+                    <div class="profile__label"><strong>About Me</strong></div>
+                    <div class="profile__value profile__bio">On my journey towards becoming a polymath.
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            </div>
+
+                    <!--Poems Section -->
+                    <section class="section">
+                        <div class="section__header">
+                            <h2 class="section__title">Poems</h2>
+                        </div>
+                        <div class="favorites-grid" id="poemGrid">
+                        </div>
+                        <div class="poems-loadmore">
+                            <button id="loadMorePoems">Load More Poems</button>
+                            <button id="showLessPoems" style="display: none;">Show Less</button>
+                        </div>
+                        
+                    </section>
+
+                    <!-- Bookshelves Section -->
+                    <section class="section">
+                        <div class="section__header">
+                            <h2 class="section__title">Sahil's Quote Collections</h2>
+                        </div>
+                        <div class="bookshelves">
+                            <div class="shelf-column">
+                                <div class="shelf-item">
+                                    <a href="#">to-read</a>
+                                    <span class="shelf-count">(23)</span>
+                                </div>
+                                <div class="shelf-item">
+                                    <a href="#">currently-reading</a>
+                                    <span class="shelf-count">(7)</span>
+                                </div>
+                                <div class="shelf-item">
+                                    <a href="#">read</a>
+                                    <span class="shelf-count">(42)</span>
+                                </div>
+                            </div>
+                            <div class="shelf-column">
+                                <div class="shelf-item">
+                                    <a href="#">love-poems</a>
+                                    <span class="shelf-count">(8)</span>
+                                </div>
+                                <div class="shelf-item">
+                                    <a href="#">nature-verses</a>
+                                    <span class="shelf-count">(12)</span>
+                                </div>
+                                <div class="shelf-item">
+                                    <a href="#">modern-poetry</a>
+                                    <span class="shelf-count">(15)</span>
+                                </div>
+                            </div>
+                            <div class="shelf-column">
+                                <div class="shelf-item">
+                                    <a href="#">contemplative</a>
+                                    <span class="shelf-count">(6)</span>
+                                </div>
+                                <div class="shelf-item">
+                                    <a href="#">classical</a>
+                                    <span class="shelf-count">(9)</span>
+                                </div>
+                                <div class="shelf-item">
+                                    <a href="#">favorites</a>
+                                    <span class="shelf-count">(5)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shelf-actions-bottom">
+                            <a href="#">Stats</a>
+                            <a href="#">More...</a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Year in Books Widget -->
+                    <div class="widget">
+                        <div class="widget__header">Sahil's Most Loved Movie</div>
+                        <div class="widget__content">
+                            <div class="year-widget">
+                                <div class="year-widget__image">
+                                    <span>2025</span>
+                                </div>
+                                <div class="year-widget__content">
+                                    <div class="year-widget__title">The best movie ever</div>
+                                    <div class="year-widget__description">
+                                        Sit back, grab your popcorn, and enjoy the cinema. This film has captured the hearts of millions with its stunning visuals, compelling story, and unforgettable characters.
+                                    </div>
+                                    <a href="https://youtu.be/dQw4w9WgXcQ?si=1iLb9Dq0BPoX4TP5" class="year-widget__link">Watch this Movie now!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Friends Widget -->
+                    <div class="widget">
+                        <div class="widget__header">Sahil's Friends (3)</div>
+                        <div class="widget__content">
+                            <div class="friend-item">
+                                <div class="friend-avatar">
+                                    <img src="https://i.pinimg.com/736x/54/23/82/542382c0cf1967a4ed02612015e23b26.jpg">
+                                </div>
+                                <div class="friend-info">
+                                    <a href="#" class="friend-name">Plato</a>
+                                    <div class="friend-stats">36 books, 0 king</div>
+                                </div>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar">
+                                    <img src="https://i.pinimg.com/736x/87/97/a5/8797a506ec688539a0763b2de8fa7814.jpg">
+                                </div>
+                                <div class="friend-info">
+                                    <a href="#" class="friend-name">John Keating</a>
+                                    <div class="friend-stats">1 kill, ∞ love</div>
+                                </div>
+                            </div>
+                            <div class="friend-item">
+                                <div class="friend-avatar">
+                                    <img src="https://i.pinimg.com/736x/1b/d7/6a/1bd76a304465594eb62690f91a125734.jpg">
+                                </div>
+                                <div class="friend-info">
+                                    <a href="#" class="friend-name">Dexter Morgan</a>
+                                    <div class="friend-stats">135 kills, 5 gfs</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Listopia Widget -->
+                    <div class="widget">
+        <div class="widget__header">Sahil's Listopia</div>
+        <div class="widget__content">
+            <!-- Movie Recommendations -->
+            <div class="listopia-content"><a href="https://www.imdb.com/title/tt0097165/">Dead Poets Society</a></div>
+            <div class="listopia-content"><a href="https://www.imdb.com/title/tt0105327/?ref_=fn_all_ttl_1">School Ties</a></div>
+            <div class="listopia-content"><a href="https://www.imdb.com/title/tt8045906/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_words%2520on%2520ba">Words on Bathroom Walls</a></div>
+            <div class="listopia-content"><a href="https://www.imdb.com/title/tt1659337/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_perks%2520of">Perks of Being a Wallflower</a></div>
+            <div class="listopia-content"><a href="https://www.imdb.com/title/tt0758758/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_into">Into the Wild</a></div>
+            <div class="listopia-content"><a href="https://www.imdb.com/title/tt3829868/?ref_=nv_sr_srsg_2_tt_8_nm_0_in_0_q_lookin">Looking for Alaska</a></div>
+
+            <!-- Hidden initially -->
+            <div class="more-items" style="display: none;">
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0119217/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_good%2520will">Good Will Hunting</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt2194499/?ref_=fn_all_ttl_1">About Time</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt1563738/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_one%2520da">One Day</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0454921/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_the%2520purs">The Pursuit of Happyness</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt8721424/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_tick%2520tick">Tick Tick Boom</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0112461/?ref_=nv_sr_srsg_0_tt_7_nm_0_in_1_q_basketball">The Basketball Diaries</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0108432/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_ocean%2520wav">Ocean Waves</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0268978/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_a%2520beauti">A Beautiful Mind</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0338013/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_eternal">Eternal Sunshine of the Spotless Mind</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt2350496/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_the%2520lunch">The Lunchbox</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt1403981/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_remember">Remember Me</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt1639426/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_udaan">Udaan</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt1773764/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_ship%2520of">Ship of Theseus</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt15561862/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_badtamee">Badtameez Dil</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt6071752/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_dil%2520ju">Dil Junglee</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0066763/?ref_=nv_sr_srsg_0_tt_3_nm_5_in_0_q_anand">Anand</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0111161/?ref_=nv_sr_srsg_0_tt_3_nm_5_in_0_q_shaws">The Shawshank Redemption</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt1324059/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_wake%2520up%2520sid">Wake Up Sid!</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0147800/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_10%2520th">10 Things I Hate About You</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt3659388/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_the%2520mart">The Martian</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt3173910/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_hasee">Hasee Toh Phasee</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt11960634/?ref_=nv_sr_srsg_0_tt_1_nm_7_in_0_q_mi%2520vasantrao">Me Vasantrao</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0457939/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_the%2520holiday">The Holiday</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0362771/?ref_=nv_sr_srsg_3_tt_8_nm_0_in_0_q_ishq%2520v">Ishq Vishk</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt1183946/?ref_=nv_sr_srsg_0_tt_7_nm_1_in_0_q_the%2520stoneman">The Stoneman Murders</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt9288030/?ref_=nv_sr_srsg_1_tt_7_nm_0_in_0_q_reach">Reacher</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0773262/?ref_=nv_sr_srsg_3_tt_6_nm_2_in_0_q_dex">Dexter</a></div>
+                <div class="listopia-content"><a href="https://www.imdb.com/title/tt0066011/?ref_=nv_sr_srsg_0_tt_8_nm_0_in_0_q_love%2520story">Love Story (1970)</a></div>
+            </div>
+
+            <!-- Show More Button -->
+            <button class="show-more-btn" onclick="toggleListopia()">Show More</button>
+        </div>
+    </div>
+
+    <!-- JS Script -->
+    <script>
+        function toggleListopia() {
+            const moreItems = document.querySelector('.more-items');
+            const btn = document.querySelector('.show-more-btn');
+
+            if (moreItems.style.display === "none") {
+                moreItems.style.display = "block";
+                btn.textContent = "Show Less";
+            } else {
+                moreItems.style.display = "none";
+                btn.textContent = "Show More";
+            }
+        }
+    </script>
+
+                    <!-- Genres Widget -->
+                    <div class="widget">
+                        <div class="widget__header">Favorite Genres</div>
+                        <div class="widget__content">
+                            <div class="genres-header">
+                                <div class="genres-title">Your Top Genres</div>
+                            </div>
+                            <div class="genres-grid">
+                                <div class="genre-item">Nature</div>
+                                <div class="genre-item">Love</div>
+                                <div class="genre-item">Modern</div>
+                                <div class="genre-item">Classical</div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </main>
+
+            <!-- Poem Modal -->
+            <div class="modal" id="poemModal">
+                <div class="modal__content">
+                    <div class="modal__header">
+                        <h2 class="modal__title" id="poemTitle">Poem Title</h2>
+                        <button class="modal__close" id="closeModal">&times;</button>
+                    </div>
+                    
+                    <div class="modal__body">
+                        <img src="" alt="Poem Cover" class="modal__cover" id="poemCover">
+                        <div class="poem-text" id="poemText">
+                            Poem content goes here...
+                        </div>
+                        <br>
+                        <div class="modal__author" id="poemAuthor"></div>
+                    
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scripts -->
+            <script src="poems.js"></script>
+        </body>
+        </html>
