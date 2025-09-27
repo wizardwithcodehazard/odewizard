@@ -7,8 +7,10 @@ class PoemManager {
         this.modalContent = document.getElementById('poemText');
         this.modalCover = document.getElementById('poemCover');
         this.closeButton = document.getElementById('closeModal');
+
         this.poems = [];
-        this.collections = [];
+        this.currentFilter = 'all'; // To store current category filter
+        this.currentSort = 'sort-latest'; // Default sort
 
         this.displayCount = 12; // poems initially
         this.batchSize = 6;     // poems per click
@@ -23,13 +25,13 @@ class PoemManager {
             if (!response.ok) throw new Error('Failed to fetch poems');
             const data = await response.json();
             this.poems = data.poems;
-            if (data.collections) {
-                this.collections = data.collections;
-                this.setupCollections();
-            }
+            this.sortPoems(this.currentSort); // Perform initial sort
+            this.setupCategories();
             this.displayPoems();
         } catch (error) {
             console.error('Error loading poems:', error);
+            const grid = document.querySelector('.favorites-grid');
+            if (grid) grid.innerHTML = '<p>Sorry, we couldn\'t load the poems at this time.</p>';
         }
     }
 
@@ -51,12 +53,13 @@ class PoemManager {
             });
         }
 
-        document.querySelectorAll('.shelf-item a').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const collectionId = link.getAttribute('data-collection');
-                this.filterByCollection(collectionId);
-            });
+        document.getElementById('categoryFilter')?.addEventListener('change', (e) => {
+            const value = e.target.value;
+            if (value.startsWith('sort-')) {
+                this.sortPoems(value);
+            } else {
+                this.filterByCategory(value);
+            }
         });
 
         const loadMoreBtn = document.getElementById('loadMorePoems');
@@ -72,32 +75,67 @@ class PoemManager {
         this.displayCount = Math.max(12, this.displayCount - this.batchSize);
         this.displayPoems();
     });
-}
+        }
+
+        const listopiaBtn = document.getElementById('listopiaToggleBtn');
+        if (listopiaBtn) {
+            listopiaBtn.addEventListener('click', () => {
+                const moreItems = document.querySelector('.more-items');
+                if (moreItems) {
+                    const isHidden = moreItems.style.display === 'none';
+                    moreItems.style.display = isHidden ? 'block' : 'none';
+                    listopiaBtn.textContent = isHidden ? 'Show Less' : 'Show More';
+                }
+            });
+        }
+
+        const toggleQuotesBtn = document.getElementById('toggleQuotesBtn');
+        if (toggleQuotesBtn) {
+            toggleQuotesBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const moreQuotes = document.getElementById('more-quotes');
+                if (moreQuotes) {
+                    const isHidden = moreQuotes.style.display === 'none';
+                    moreQuotes.style.display = isHidden ? 'block' : 'none';
+                    e.target.textContent = isHidden ? 'Show Less' : 'More...';
+                }
+            });
+        }
 
     }
 
-    displayPoems(poemsToShow = this.poems, limit = this.displayCount) {
+    displayPoems(poemsToShow = null) {
         const grid = document.querySelector('.favorites-grid');
         if (!grid) return;
         grid.innerHTML = '';
 
-        const slicedPoems = poemsToShow.slice(0, limit);
+        let poemsToDisplay = poemsToShow;
+
+        if (poemsToDisplay === null) {
+            // If not a search result, apply category filter
+            if (this.currentFilter !== 'all') {
+                poemsToDisplay = this.poems.filter(poem => poem.category === this.currentFilter);
+            } else {
+                poemsToDisplay = this.poems;
+            }
+        }
+
+        const slicedPoems = poemsToDisplay.slice(0, this.displayCount);
+        if (slicedPoems.length === 0) {
+            grid.innerHTML = '<p>No poems found for this filter.</p>';
+        }
+
         slicedPoems.forEach(poem => {
             const poemElement = this.createPoemElement(poem);
             grid.appendChild(poemElement);
         });
 
         const loadMoreBtn = document.getElementById('loadMorePoems');
-const showLessBtn = document.getElementById('showLessPoems');
-
-if (loadMoreBtn && showLessBtn) {
-    const moreToShow = limit < poemsToShow.length;
-    const canShowLess = limit > 12;
-
-    loadMoreBtn.style.display = moreToShow ? 'inline-block' : 'none';
-    showLessBtn.style.display = canShowLess ? 'inline-block' : 'none';
-}
-
+        const showLessBtn = document.getElementById('showLessPoems');
+        if (loadMoreBtn && showLessBtn) {
+            loadMoreBtn.style.display = this.displayCount < poemsToDisplay.length ? 'inline-block' : 'none';
+            showLessBtn.style.display = this.displayCount > 12 ? 'inline-block' : 'none';
+        }
     }
 
     createPoemElement(poem) {
@@ -134,29 +172,42 @@ if (loadMoreBtn && showLessBtn) {
         this.modal.classList.remove('active');
     }
 
-    setupCollections() {
-        const shelves = document.querySelector('.bookshelves');
-        if (!shelves) return;
-        shelves.innerHTML = '';
+    setupCategories() {
+        const categoryFilter = document.getElementById('categoryFilter');
+        const genresGrid = document.getElementById('genresGrid');
+        if (!categoryFilter || !genresGrid) return;
+        const categoryGroup = categoryFilter.querySelector('optgroup[label="Filter By"]');
 
-        this.collections.forEach(collection => {
-            const div = document.createElement('div');
-            div.className = 'shelf-item';
-            div.innerHTML = `
-                <a href="#" data-collection="${collection.id}">${collection.name}</a>
-                <span class="shelf-count">(${this.getCollectionCount(collection.id)})</span>
-            `;
-            shelves.appendChild(div);
+        const categories = [...new Set(this.poems.map(p => p.category))].sort();
+
+        categories.forEach(category => {
+            const option = document.createElement('option');
+            option.value = category;
+            option.textContent = category;
+            categoryGroup.appendChild(option);
         });
     }
 
-    getCollectionCount(collectionId) {
-        return this.poems.filter(poem => poem.collection === collectionId).length;
+    filterByCategory(category) {
+        this.currentFilter = category;
+        document.getElementById('categoryFilter').value = category; // Sync dropdown
+        this.displayCount = 12; // Reset display count on new filter
+        this.displayPoems();
     }
 
-    filterByCollection(collectionId) {
-        const filteredPoems = this.poems.filter(poem => poem.collection === collectionId);
-        this.displayPoems(filteredPoems);
+    sortPoems(sortType) {
+        this.currentSort = sortType;
+        document.getElementById('categoryFilter').value = sortType; // Sync dropdown
+
+        this.poems.sort((a, b) => {
+            const dateA = new Date(a.date);
+            const dateB = new Date(b.date);
+            if (sortType === 'sort-latest') {
+                return dateB - dateA; // Descending
+            }
+            return dateA - dateB; // Ascending
+        });
+        this.displayPoems();
     }
 }
 
@@ -166,4 +217,11 @@ function openPoemModal(poemId) {
 
 document.addEventListener('DOMContentLoaded', () => {
     window.poemManager = new PoemManager();
+
+    // Register the service worker for PWA functionality
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then((reg) => console.log('Service worker registered.', reg))
+            .catch((err) => console.error('Service worker not registered.', err));
+    }
 });

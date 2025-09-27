@@ -34,6 +34,7 @@ html {
     font-size: 16px;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    scrollbar-width: none; /* Firefox */
 }
 
 body {
@@ -43,8 +44,21 @@ body {
     color: var(--text-primary);
     background-color: var(--bg-primary);
     overflow-x: hidden;
+    -ms-overflow-style: none;  /* IE and Edge */
 }
-
+/* Hide scrollbar for all elements but allow scrolling */
+/* For Firefox */
+html {
+  scrollbar-width: none;
+}
+/* For IE and Edge */
+body {
+  -ms-overflow-style: none;
+}
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
 /* Promo Banner */
 .promo-banner {
     background: var(--promo-bg);
@@ -453,6 +467,26 @@ body {
     background-color: rgb(120, 88, 88);
 }
 
+/* Quote List Section */
+.quote-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Adds space between each quote */
+}
+
+.quote-item {
+    font-family: "Georgia", serif;
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    border-left: 4px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+}
+
 /* Bookshelves Section */
 .bookshelves {
     display: grid;
@@ -674,47 +708,29 @@ body {
     background-color: rgb(120, 88, 88);
 }
 
-/* Genres Widget */
-.genres-header {
+/* Social Links Widget (replaces Genres) */
+.social-links-widget {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.social-link {
+    display: flex;
     align-items: center;
-    margin-bottom: 15px;
-}
-
-.genres-title {
+    gap: 0.75rem;
+    color: var(--text-link);
+    color: var(--text-secondary);
+    text-decoration: none;
     font-size: 14px;
-    font-weight: 600;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.social-link:hover {
+    background-color: var(--bg-secondary);
     color: var(--primary-brown);
-}
-
-.genres-edit {
-    color: var(--text-link);
-    text-decoration: none;
-    font-size: 12px;
-}
-
-.genres-edit:hover {
-    text-decoration: underline;
-}
-
-.genres-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 8px;
-    font-size: 13px;
-}
-
-.genre-item {
-    color: var(--text-link);
-    text-decoration: none;
-    padding: 4px 0;
-    text-align: center;
-    cursor: pointer;
-}
-
-.genre-item:hover {
-    text-decoration: underline;
 }
 
 /* Modal Styles */
@@ -738,7 +754,7 @@ body {
 
 .modal__content {
     background: var(--bg-primary);
-    border-radius: 12px;
+    border-radius: 25px;
     max-width: 800px;
     width: 100%;
     max-height: 90vh;
@@ -783,13 +799,19 @@ body {
 
 .modal__body {
     padding: 1.5rem;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.modal__body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
 }
 
 .modal__cover {
     width: 100%;
     max-height: 300px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 28px;
     margin-bottom: 15px;
 }
 
@@ -1258,6 +1280,12 @@ body {
 
 .modal__body {
     padding: 1.5rem;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.modal__body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
 }
 
 .modal__cover {
@@ -1343,22 +1371,7 @@ body {
 }
 
 /* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--text-secondary);
-}
+::-webkit-scrollbar { display: none; } /* Chrome, Safari, Opera */
 
 /* Focus Styles for Accessibility */
 button:focus,
@@ -1551,14 +1564,13 @@ a:focus {
     }
 }
 
-/* Small tablets and large phones */
-@media (max-width: 640px) {
+/* Mobile-specific friend list styling */
+@media (max-width: 768px) {
     .header__left {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
     }
-    
     .logo {
         align-self: center;
     }
@@ -1567,34 +1579,50 @@ a:focus {
         width: 100%;
         justify-content: center;
     }
-    
     .profile__avatar {
         width: 100px;
         height: 100px;
     }
-    
     .favorites-grid {
         grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
     }
-    
     .year-widget {
         flex-direction: column;
         text-align: center;
     }
-    
     .year-widget__image {
         align-self: center;
     }
-    
     .friend-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 8px;
+        flex-direction: row; /* Change from column to row */
+        align-items: center; /* Re-center items vertically */
     }
-    
     .friend-avatar {
-        align-self: center;
+        /* No longer needed as align-items on parent handles it */
     }
+
+    .social-links-widget {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .social-link {
+        padding: 0.5rem;
+        font-size: 1.5rem; /* Make icon bigger */
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        justify-content: center;
+    }
+    .social-link span {
+        display: none; /* Hide text on mobile */
+    }
+}
+
+/* Small tablets and large phones */
+@media (max-width: 640px) {
 }
 
 /* Mobile phones */

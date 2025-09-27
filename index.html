@@ -3,8 +3,12 @@
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Poet'sYard</title>
+            <title>sahilwrites</title>
+            <link rel="manifest" href="manifest.json">
+            <meta name="theme-color" content="#f4f1e8"/>
             <link rel="stylesheet" href="styles.css">
+            <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+            <link rel="icon" href="icons/icon-192x192.png" type="image/png">
             
         </head>
         <body>
@@ -19,10 +23,10 @@
                     <div class="header__left">
                         <a href="#" class="logo">ode<strong>wizard</strong></a>
                         <nav class="nav">
-                            <a href="#" class="nav__link">Home</a>
-                            <a href="#" class="nav__link">My Poems</a>
-                            <a href="#" class="nav__link">Browse ▾</a>
-                            <a href="" class="nav__link">Community ▾</a>
+                            <a href="" class="nav__link">Home</a>
+                            <a href="" class="nav__link">My Poems</a>
+                            <a href="https://linktr.ee/sahilrane" class="nav__link">Browse ▾</a>
+                            <a href="https://medium.com/@sahilrane." class="nav__link">Community ▾</a>
                         </nav>
                     </div>
                     <div class="header__right">
@@ -32,14 +36,14 @@
 
                         </div>
                         <div class="header__icons">
-                            <div class="header__icon"><a href="www.linkedin.com/in/sahilrane8" style="text-decoration: none; color: inherit;" title="linkedin">💼</a></div>
+                            <div class="header__icon"><a href="https://www.linkedin.com/in/sahilrane8" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;" title="linkedin">💼</a></div>
                             <div class="header__icon">
-                                <a href="https://www.instagram.com/sahilrane._" style="text-decoration: none; color: inherit;" title="instagram">👤</a></div>
+                                <a href="https://www.instagram.com/sahilrane._" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;" title="instagram">👤</a></div>
                             <div class="header__icon">
-                            <a href="https://x.com/SahilRane249?t=5p7_e2H5Hsp5x8d-pNRCHg&s=09" style="text-decoration: none; color: inherit;" title="x">✉️</a>
+                            <a href="https://x.com/SahilRane249" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;" title="x">✉️</a>
                             </div>
-                            <div class="header__icon"><a href="https://www.goodreads.com/user/show/185868984-sahil-rane" style="text-decoration: none; color: inherit;" title="goodreads">📖</a></div>
-                            <div class="header__icon"><a href="https://github.com/wizardwithcodehazard" style="text-decoration: none; color: inherit;" title="github">☕️</a></div>
+                            <div class="header__icon"><a href="https://www.goodreads.com/user/show/185868984-sahil-rane" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;" title="goodreads">📖</a></div>
+                            <div class="header__icon"><a href="https://github.com/wizardwithcodehazard" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit;" title="github">☕️</a></div>
                         </div>
                     </div>
                 </div>
@@ -102,9 +106,21 @@
                     <!--Poems Section -->
                     <section class="section">
                         <div class="section__header">
-                            <h2 class="section__title">Poems</h2>
+                            <h2 class="section__title" id="poems-section-title">Poems</h2>
+                            <div class="category-filter-container">
+                                <select id="categoryFilter" class="category-filter">
+                                    <optgroup label="Filter By">
+                                        <option value="all">All Categories</option>
+                                    </optgroup>
+                                    <optgroup label="Sort By">
+                                        <option value="sort-latest">Latest to Oldest</option>
+                                        <option value="sort-oldest">Oldest to Latest</option>
+                                    </optgroup>
+                                </select>
+                            </div>
                         </div>
                         <div class="favorites-grid" id="poemGrid">
+                            <!-- Poems will be loaded here by JavaScript -->
                         </div>
                         <div class="poems-loadmore">
                             <button id="loadMorePoems">Load More Poems</button>
@@ -118,53 +134,26 @@
                         <div class="section__header">
                             <h2 class="section__title">Sahil's Quote Collections</h2>
                         </div>
-                        <div class="bookshelves">
-                            <div class="shelf-column">
-                                <div class="shelf-item">
-                                    <a href="#">to-read</a>
-                                    <span class="shelf-count">(23)</span>
-                                </div>
-                                <div class="shelf-item">
-                                    <a href="#">currently-reading</a>
-                                    <span class="shelf-count">(7)</span>
-                                </div>
-                                <div class="shelf-item">
-                                    <a href="#">read</a>
-                                    <span class="shelf-count">(42)</span>
-                                </div>
-                            </div>
-                            <div class="shelf-column">
-                                <div class="shelf-item">
-                                    <a href="#">love-poems</a>
-                                    <span class="shelf-count">(8)</span>
-                                </div>
-                                <div class="shelf-item">
-                                    <a href="#">nature-verses</a>
-                                    <span class="shelf-count">(12)</span>
-                                </div>
-                                <div class="shelf-item">
-                                    <a href="#">modern-poetry</a>
-                                    <span class="shelf-count">(15)</span>
-                                </div>
-                            </div>
-                            <div class="shelf-column">
-                                <div class="shelf-item">
-                                    <a href="#">contemplative</a>
-                                    <span class="shelf-count">(6)</span>
-                                </div>
-                                <div class="shelf-item">
-                                    <a href="#">classical</a>
-                                    <span class="shelf-count">(9)</span>
-                                </div>
-                                <div class="shelf-item">
-                                    <a href="#">favorites</a>
-                                    <span class="shelf-count">(5)</span>
-                                </div>
+                        <div class="quote-list">
+                            <div class="quote-item">"Journeys end in lovers meeting." – William Shakespeare</div>
+                            <div class="quote-item">"Unconditional love doesn’t mean unconditional tolerance."</div>
+                            <div class="quote-item">"You are being loved by someone, somewhere, sometime."</div>
+                            <div class="quote-item">"We accept the love we think we deserve." – Charlie</div>
+                            <div id="more-quotes" style="display: none;">
+                                <div class="quote-item">"Nothing lasts forever, not even the mountains. Everything changes." – John Oldman</div>
+                                <br>
+                                <div class="quote-item">"I’ve watched empires rise and fall, and the one thing that doesn’t change is human nature." – John Oldman</div><br>
+                                <div class="quote-item">"Most people would resist the truth and prefer the familiar shadows to the reality beyond." – Plato’s Allegory of the Cave</div><br>
+                                <div class="quote-item">"Nothing contributes so much to tranquillize the mind as a steady purpose." – Victor Frankenstein</div><br>
+                                <div class="quote-item">"Drive my dead thoughts over the universe like withered leaves to quicken a new birth!" – Percy Bysshe Shelley</div><br>
+                                <div class="quote-item">"Every life ends. Every story has an ending. But in between, there’s a whole lot of living to do."</div><br>
+                                <div class="quote-item">"We should always be doing things that we truly enjoy, not things that make us rich or famous."</div><br>
+                                <div class="quote-item">"Happiness is internal, and you should seek it in yourself, not outside." – Naval Ravikant</div>
                             </div>
                         </div>
                         <div class="shelf-actions-bottom">
                             <a href="#">Stats</a>
-                            <a href="#">More...</a>
+                            <a href="#" id="toggleQuotesBtn">More...</a>
                         </div>
                     </section>
                 </div>
@@ -180,11 +169,12 @@
                                     <span>2025</span>
                                 </div>
                                 <div class="year-widget__content">
-                                    <div class="year-widget__title">The best movie ever</div>
+                                    <div class="year-widget__title">The best movie scene ever</div>
                                     <div class="year-widget__description">
-                                        Sit back, grab your popcorn, and enjoy the cinema. This film has captured the hearts of millions with its stunning visuals, compelling story, and unforgettable characters.
+                                        I love them and this scene has a special place in my heart.
+                                        Hope you love it and if you do, you are my kind of people.
                                     </div>
-                                    <a href="https://youtu.be/dQw4w9WgXcQ?si=1iLb9Dq0BPoX4TP5" class="year-widget__link">Watch this Movie now!</a>
+                                    <a href="https://youtu.be/mtCRF5BJrLg?si=Ya35MR235tMKYOkF&t=31" class="year-widget__link">Watch this Movie Scene now!</a>
                                 </div>
                             </div>
                         </div>
@@ -269,38 +259,21 @@
             </div>
 
             <!-- Show More Button -->
-            <button class="show-more-btn" onclick="toggleListopia()">Show More</button>
+            <button class="show-more-btn" id="listopiaToggleBtn">Show More</button>
         </div>
     </div>
 
-    <!-- JS Script -->
-    <script>
-        function toggleListopia() {
-            const moreItems = document.querySelector('.more-items');
-            const btn = document.querySelector('.show-more-btn');
-
-            if (moreItems.style.display === "none") {
-                moreItems.style.display = "block";
-                btn.textContent = "Show Less";
-            } else {
-                moreItems.style.display = "none";
-                btn.textContent = "Show More";
-            }
-        }
-    </script>
-
-                    <!-- Genres Widget -->
+                    <!-- Know More Widget -->
                     <div class="widget">
-                        <div class="widget__header">Favorite Genres</div>
+                        <div class="widget__header">Know More About Me</div>
                         <div class="widget__content">
-                            <div class="genres-header">
-                                <div class="genres-title">Your Top Genres</div>
-                            </div>
-                            <div class="genres-grid">
-                                <div class="genre-item">Nature</div>
-                                <div class="genre-item">Love</div>
-                                <div class="genre-item">Modern</div>
-                                <div class="genre-item">Classical</div>
+                            <div class="social-links-widget">
+                                <a href="https://www.linkedin.com/in/sahilrane8" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">💼<span>LinkedIn</span></a>
+                                <a href="https://www.instagram.com/sahilrane._" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">👤<span>Instagram</span></a>
+                                <a href="https://x.com/SahilRane249" target="_blank" rel="noopener noreferrer" class="social-link" title="X/Twitter">✉️<span>X/Twitter</span></a>
+                                <a href="https://www.goodreads.com/user/show/185868984-sahil-rane" target="_blank" rel="noopener noreferrer" class="social-link" title="Goodreads">📖<span>Goodreads</span></a>
+                                <a href="https://github.com/wizardwithcodehazard" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">🔧<span>GitHub</span></a>
+                                <a href="https://buymeacoffee.com/sahilrane_" target="_blank" rel="noopener noreferrer" class="social-link" title="buymeacoffee">☕️<span>Support Me</span></a>
                             </div>
                         </div>
                     </div>
@@ -327,7 +300,18 @@
                 </div>
             </div>
 
+            <!-- Video Modal -->
+            <div class="modal" id="videoModal">
+                <div class="modal__content video-modal__content">
+                    <button class="modal__close" id="closeVideoModal">&times;</button>
+                    <div class="video-container" id="videoContainer">
+                        <!-- YouTube iframe will be injected here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
             <!-- Scripts -->
             <script src="poems.js"></script>
+
         </body>
         </html>
