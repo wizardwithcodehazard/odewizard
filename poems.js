@@ -174,8 +174,7 @@ class PoemManager {
 
     setupCategories() {
         const categoryFilter = document.getElementById('categoryFilter');
-        const genresGrid = document.getElementById('genresGrid');
-        if (!categoryFilter || !genresGrid) return;
+        if (!categoryFilter) return;
         const categoryGroup = categoryFilter.querySelector('optgroup[label="Filter By"]');
 
         const categories = [...new Set(this.poems.map(p => p.category))].sort();
