@@ -82,7 +82,8 @@ class PoemManager {
             listopiaBtn.addEventListener('click', () => {
                 const moreItems = document.querySelector('.more-items');
                 if (moreItems) {
-                    const isHidden = moreItems.style.display === 'none';
+                    // This new logic checks the inline style directly
+                    const isHidden = moreItems.style.display === 'none' || moreItems.style.display === '';
                     moreItems.style.display = isHidden ? 'block' : 'none';
                     listopiaBtn.textContent = isHidden ? 'Show Less' : 'Show More';
                 }
@@ -95,7 +96,8 @@ class PoemManager {
                 e.preventDefault();
                 const moreQuotes = document.getElementById('more-quotes');
                 if (moreQuotes) {
-                    const isHidden = moreQuotes.style.display === 'none';
+                    // This new logic checks the inline style directly
+                    const isHidden = moreQuotes.style.display === 'none' || moreQuotes.style.display === '';
                     moreQuotes.style.display = isHidden ? 'block' : 'none';
                     e.target.textContent = isHidden ? 'Show Less' : 'More...';
                 }
@@ -216,6 +218,18 @@ function openPoemModal(poemId) {
 
 document.addEventListener('DOMContentLoaded', () => {
     window.poemManager = new PoemManager();
+    
+    // This ensures hidden sections are always closed on initial page load,
+    // overriding any potential browser caching issues.
+    const moreQuotes = document.getElementById('more-quotes');
+    if (moreQuotes) {
+        moreQuotes.style.display = 'none';
+    }
+    
+    const moreListopiaItems = document.querySelector('.more-items');
+    if (moreListopiaItems) {
+        moreListopiaItems.style.display = 'none';
+    }
 
     // Register the service worker for PWA functionality
     if ('serviceWorker' in navigator) {
