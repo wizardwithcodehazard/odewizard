@@ -1,0 +1,12 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow sensitive or unnecessary paths (good practice)
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /drafts/
+Disallow: /404.html
+
+# Sitemap location
+Sitemap: https://wizardwithcodehazard.github.io/odewizard/sitemap.xml
