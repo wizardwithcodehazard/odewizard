@@ -4,7 +4,7 @@
 
 Welcome to **odeWizard**, a beautifully designed web portfolio created to house a personal collection of poems. This project is a blend of creative writing and modern web development, designed to offer a seamless and immersive reading experience, inspired by the cozy feel of Goodreads.
 
-**https://github.com/wizardwithcodehazard/odewizard/**
+**https://odewizard.pages.dev/**
 
 <img width="1920" height="1991" alt="screencapture-wizardwithcodehazard-github-io-odewizard-2025-09-28-06_54_52" src="https://github.com/user-attachments/assets/017291f1-842d-4fa2-940c-ea322de44059" />
 
